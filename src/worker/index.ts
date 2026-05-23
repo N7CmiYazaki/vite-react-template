@@ -1,4 +1,4 @@
-import type { D1Database, KVNamespace } from '@cloudflare/workers-types'
+// import type { D1Database, KVNamespace } from '@cloudflare/workers-types'
 import { Hono } from "hono";
 
 interface Env {
