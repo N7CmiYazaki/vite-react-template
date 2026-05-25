@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Reactをインポート
+import { useState } from 'react'; // Reactをインポート
 import styles from "./Menu.module.css";
 
 export default function App() {
