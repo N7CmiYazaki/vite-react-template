@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import styles from "./Menu.mpdule.css";
+import styles from "./Menu.module.css";
 import { createRoot } from 'react-dom/client'
 
 export default function App () {
