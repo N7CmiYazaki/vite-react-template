@@ -1,27 +1,43 @@
-import { useState } from 'react'; // Reactをインポート
-import styles from "./Menu.module.css";
+import { useState } from "react";
+import styles from "./Menu.module.css"
 
-export default function App() {
+const MENU_ITEMS = [
+  { id: 1, label: "ホーム", icon: "🏠", color: "text-blue-600"},
+  { id: 2, label: "プロフィール", icon: "👤", color: "text-gray-700"},
+  { id: 3, label: "設定", icon: "⚙", color: "text-gray-700"},
+  { id: 4, label: "ログアウト", icon: "🚪", color: "text-red-500"},
+];
+
+export default function App () {
   const [menuState, setMenuState] = useState<"open" | "closed">("closed");
 
   return (
-    <div className='p-5 text-center'>
-      <h1 className='text-2xl font-bold mb-4'>ハイブリッドCSSの練習</h1>
+    <div className=" p-5 text-center font-sans ">
+      <h1 className="text-2xl font-bold mb-6 text-gray-800">実務レベルの配列処理</h1>
 
       <button
-        onClick={() => setMenuState(menuState === "open" ? "closed" : "open")}
-        className='px-4 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600 transition'
+        onClick={() => setMenuState(menuState === "open" ? "closed" : "open" )}
+        className={`px-6 py-2 text-white rounded-full shadow-lg transition-all transeform active:scale-95 ${
+          menuState === "open" ? "bg-red-500" : "bg-blue-600"
+        } }`}
       >
-        {menuState === "open" ? "閉じる" : "メニュー" }
+        {menuState === "open" ? "閉じる" : "メニューを開く" }
       </button>
 
       {menuState === "open" && (
-        <div className={`${styles.menuBox} mt-4 p-4 bg-gray-50 rounded-lg max-w-xs mx-auto text-left`}>
-          <p className="p-2 text-blue-600 font-semibold hover:bg-gray-200 rounded cursor-pointer">
-            ホーム
-          </p>
-          <p className="p-2 hover:bg-gray-200 rounded cursor-pointer">プロフィール</p>
-          <p className="p-2 hover:bg-gray-200 rounded cursor-pointer">設定</p>
+        <div className={`${styles.menuBox} mt-6 p-2 bg-white rounded-xl shadow-2xl max-w-xs mx-auto border border-gray-100`}>
+          {MENU_ITEMS.map((item) => (
+            <div
+              key={item.id}
+              className="flex items-center p-3 hover:bg-bule-50 rounded-lg cursor-pointer transition-colors group"
+            >
+              <span className="mr-3 text-xl">{item.icon}</span>
+              <span className={`font-medium ${item.color} group-hovor:text-bule-700`}>
+                {item.label}
+              </span>
+            </div>
+          ))}
+
         </div>
       )}
     </div>
