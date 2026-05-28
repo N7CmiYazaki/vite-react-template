@@ -1,3 +1,5 @@
+import { Hono } from "hono";
+
 app.get('/api/menu', (c) => {
     return c.json([
         { id: 1, label: "ホーム", icon: "🏠", color: "text-blue-600" },
