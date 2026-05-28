@@ -14,18 +14,15 @@ export default function App () {
   const [isLoading,setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const timer = setTimeout (() => {
-      const mockData: MenuItem[] = [
-        { id: 1, label: "ホーム", icon: "🏠", color: "text-bule-600" },
-        { id: 2, label: "プロフィール", icon: "👤", color: "text-gray-700" },
-        { id: 3, label: "設定", icon: "⚙", color: "text-grau-700" },
-        { id: 4, label: "ログアウト", icon: "🚪", color: "text-red-500" },
-      ];
-      setMenuItems(mockData);
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
+   fetch('/api/menu')
+   .then((res) => res.json())
+   .then((tata: MenuItem[]) => {
+    setMenuItems(data);
+    setIsLoading(false);
+   })
+   .catch((err) => {
+      console.error("データの取得に失敗しました:", err);
+   });
   } , []);
 
   return (
