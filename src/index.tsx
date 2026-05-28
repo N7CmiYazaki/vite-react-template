@@ -16,7 +16,7 @@ export default function App () {
   useEffect(() => {
    fetch('/api/menu')
    .then((res) => res.json())
-   .then((tata: MenuItem[]) => {
+   .then((data: MenuItem[]) => {
     setMenuItems(data);
     setIsLoading(false);
    })
