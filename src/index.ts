@@ -1,5 +1,7 @@
 import { Hono } from "hono";
 
+const app = new Hono()
+
 app.get('/api/menu', (c) => {
     return c.json([
         { id: 1, label: "ホーム", icon: "🏠", color: "text-blue-600" },
